@@ -5,7 +5,11 @@ import org.springframework.mail.MailException;
 public class SpringRedditException extends RuntimeException {
     public SpringRedditException(String message, MailException exception) {
         super(exception);
-    } public SpringRedditException(String message) {
+    }
+
+    public SpringRedditException(String message) {
+        super(message);
+    }public SpringRedditException(String message,String cause) {
         super(message);
     }
 }
