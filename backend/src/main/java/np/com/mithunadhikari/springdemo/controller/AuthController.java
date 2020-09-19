@@ -30,12 +30,12 @@ public class AuthController {
                 "Account activated successfully ", HttpStatus.OK
         );
     }
+
     @PostMapping("/login")
-    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
-       return authService.login(loginRequest);
+    public AuthenticationResponse login(@RequestBody LoginRequest loginRequest) {
+        return authService.login(loginRequest);
 
     }
-
 
 
 }
