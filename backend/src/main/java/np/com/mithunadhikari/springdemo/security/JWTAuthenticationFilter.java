@@ -35,9 +35,12 @@ public class JWTAuthenticationFilter extends OncePerRequestFilter {
         //because we used the username as the subject while creating the token
         //we can easily retrieve the username from the token as well
 
-        boolean validToken = jwtProvider.validateToken(token);
+        //here this would cause a problem because the token might be empty or null
+        // and we are trying to validate the token
+        //we should make sure first that the token is not null and is not empty
+//        boolean validToken = jwtProvider.validateToken(token);
 
-        if (StringUtils.hasText(token) && validToken) {
+        if (StringUtils.hasText(token) && jwtProvider.validateToken(token)) {
             String username = jwtProvider.getUsernameFromToken(token);
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken authenticationToken =
